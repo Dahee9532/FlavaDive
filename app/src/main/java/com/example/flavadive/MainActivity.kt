@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -17,9 +19,11 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -48,6 +52,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -147,18 +152,17 @@ fun LoginScreen() {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
-                painter = painterResource(R.drawable.kakao_login_medium_narrow),
+                painter = painterResource(R.drawable.kakao_login_large_narrow),
                 contentDescription = null,
-//                modifier = Modifier.size(80.dp),
-                contentScale = ContentScale.Crop,
+                modifier = Modifier.width(150.dp),
+//                contentScale = ContentScale.Crop,
             )
             Image(
-                painter = painterResource(R.drawable.android_light_sq_3x),
+                painter = painterResource(R.drawable.android_neutral_sq_3x),
                 contentDescription = null,
-//                modifier = Modifier.size(80.dp),
-                contentScale = ContentScale.Crop,
+                modifier = Modifier.width(150.dp),
+//                contentScale = ContentScale.Crop,
             )
         }
     }
 }
-
