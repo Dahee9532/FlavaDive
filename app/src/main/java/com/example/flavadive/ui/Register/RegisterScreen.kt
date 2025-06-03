@@ -28,15 +28,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.flavadive.R
 import com.example.flavadive.ui.theme.notosanskr
 
 @Composable
-fun RegisterName(navController: NavHostController) {
-    val (name, setName) = remember {
-        mutableStateOf("")
-    }
-
+fun RegisterName(
+    navController: NavHostController,
+    viewModel: RegisterViewModel = viewModel()
+) {
     Column(
         modifier = Modifier.padding(horizontal = 25.dp),
     ) {
@@ -59,8 +59,8 @@ fun RegisterName(navController: NavHostController) {
             fontWeight = FontWeight.Light,
         )
         TextField(
-            value = name,
-            onValueChange = setName,
+            value = viewModel.name,
+            onValueChange = { viewModel.name = it },
             modifier = Modifier
                 .fillMaxWidth(),
             placeholder = { Text(text = "홍길동") },
@@ -76,7 +76,7 @@ fun RegisterName(navController: NavHostController) {
         Spacer(modifier = Modifier.height(10.dp))
         IconButton(
             onClick = {
-                navController.navigate("phoneNumber/$name")
+                navController.navigate("phoneNumber")
             },
             modifier = Modifier
                 .size(30.dp)
@@ -91,11 +91,10 @@ fun RegisterName(navController: NavHostController) {
 }
 
 @Composable
-fun RegisterPhoneNumber(navController: NavHostController, name : String) {
-    val (phoneNumber, setPhoneNumber) = remember {
-        mutableStateOf("")
-    }
-
+fun RegisterPhoneNumber(
+    navController: NavHostController,
+    viewModel: RegisterViewModel = viewModel()
+) {
     Column(
         modifier = Modifier.padding(horizontal = 25.dp),
     ) {
@@ -120,7 +119,7 @@ fun RegisterPhoneNumber(navController: NavHostController, name : String) {
         )
 
         TextField(
-            value = name,
+            value = viewModel.name,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -132,8 +131,8 @@ fun RegisterPhoneNumber(navController: NavHostController, name : String) {
         )
 
         TextField(
-            value = phoneNumber,
-            onValueChange = setPhoneNumber,
+            value = viewModel.phoneNumber,
+            onValueChange = { viewModel.phoneNumber = it },
             modifier = Modifier
                 .fillMaxWidth(),
             placeholder = { Text(text = "010-****-****") },
@@ -151,7 +150,7 @@ fun RegisterPhoneNumber(navController: NavHostController, name : String) {
         Spacer(modifier = Modifier.height(10.dp))
         IconButton(
             onClick = {
-                navController.navigate("nickName/$name/$phoneNumber")
+                navController.navigate("nickName")
             },
             modifier = Modifier
                 .size(30.dp)
@@ -166,11 +165,10 @@ fun RegisterPhoneNumber(navController: NavHostController, name : String) {
 }
 
 @Composable
-fun RegisterNickName(navController: NavHostController, name: String, phoneNumber: String) {
-    val (nickName, setNickName) = remember {
-        mutableStateOf("")
-    }
-
+fun RegisterNickName(
+    navController: NavHostController,
+    viewModel: RegisterViewModel = viewModel()
+) {
     Column(
         modifier = Modifier.padding(horizontal = 25.dp),
     ) {
@@ -194,7 +192,7 @@ fun RegisterNickName(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = name,
+            value = viewModel.name,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -206,7 +204,7 @@ fun RegisterNickName(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = phoneNumber,
+            value = viewModel.phoneNumber,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -218,8 +216,8 @@ fun RegisterNickName(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = nickName,
-            onValueChange = setNickName,
+            value = viewModel.nickName,
+            onValueChange = { viewModel.nickName = it },
             modifier = Modifier
                 .fillMaxWidth(),
             placeholder = { Text(text = "nick name") },
@@ -235,7 +233,7 @@ fun RegisterNickName(navController: NavHostController, name: String, phoneNumber
         Spacer(modifier = Modifier.height(10.dp))
         IconButton(
             onClick = {
-                navController.navigate("password/$name/$phoneNumber/$nickName")
+                navController.navigate("password")
             },
             modifier = Modifier
                 .size(30.dp)
@@ -250,11 +248,10 @@ fun RegisterNickName(navController: NavHostController, name: String, phoneNumber
 }
 
 @Composable
-fun RegisterPassword(navController: NavHostController, name: String, phoneNumber: String, nickName: String) {
-    val (passWord, setPassWord) = remember {
-        mutableStateOf("")
-    }
-
+fun RegisterPassword(
+    navController: NavHostController,
+    viewModel: RegisterViewModel = viewModel()
+) {
     Column(
         modifier = Modifier.padding(horizontal = 25.dp),
     ) {
@@ -278,7 +275,7 @@ fun RegisterPassword(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = name,
+            value = viewModel.name,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -290,7 +287,7 @@ fun RegisterPassword(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = phoneNumber,
+            value = viewModel.phoneNumber,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -302,7 +299,7 @@ fun RegisterPassword(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = nickName,
+            value = viewModel.nickName,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -314,8 +311,8 @@ fun RegisterPassword(navController: NavHostController, name: String, phoneNumber
         )
 
         TextField(
-            value = passWord,
-            onValueChange = setPassWord,
+            value = viewModel.password,
+            onValueChange = { viewModel.password = it },
             modifier = Modifier
                 .fillMaxWidth(),
             placeholder = { Text(text = "*****") },
@@ -333,7 +330,7 @@ fun RegisterPassword(navController: NavHostController, name: String, phoneNumber
         Spacer(modifier = Modifier.height(10.dp))
         IconButton(
             onClick = {
-                navController.navigate("passwordAgain/$name/$phoneNumber/$nickName/$passWord")
+                navController.navigate("passwordAgain")
             },
             modifier = Modifier
                 .size(30.dp)
@@ -348,11 +345,10 @@ fun RegisterPassword(navController: NavHostController, name: String, phoneNumber
 }
 
 @Composable
-fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneNumber: String, nickName: String, passWord: String) {
-    val (passWordAgain, setPassWordAgain) = remember {
-        mutableStateOf("")
-    }
-
+fun RegisterPasswordAgain(
+    navController: NavHostController,
+    viewModel: RegisterViewModel = viewModel()
+) {
     Column(
         modifier = Modifier.padding(horizontal = 25.dp),
     ) {
@@ -376,7 +372,7 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
         )
 
         TextField(
-            value = name,
+            value = viewModel.name,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -388,7 +384,7 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
         )
 
         TextField(
-            value = phoneNumber,
+            value = viewModel.phoneNumber,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -400,7 +396,7 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
         )
 
         TextField(
-            value = nickName,
+            value = viewModel.nickName,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -412,7 +408,7 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
         )
 
         TextField(
-            value = passWord,
+            value = viewModel.password,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -424,8 +420,8 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
         )
 
         TextField(
-            value = passWordAgain,
-            onValueChange = setPassWordAgain,
+            value = viewModel.passwordAgain,
+            onValueChange = { viewModel.passwordAgain = it },
             modifier = Modifier
                 .fillMaxWidth(),
             placeholder = { Text(text = "*****") },
@@ -443,7 +439,7 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
         Spacer(modifier = Modifier.height(10.dp))
         IconButton(
             onClick = {
-                navController.navigate("role/$name/$phoneNumber/$nickName/$passWord/$passWordAgain")
+                navController.navigate("role")
             },
             modifier = Modifier
                 .size(30.dp)
@@ -458,7 +454,10 @@ fun RegisterPasswordAgain(navController: NavHostController, name: String, phoneN
 }
 
 @Composable
-fun RegisterRole(navController: NavHostController, name: String, phoneNumber: String, nickName: String, passWord: String, passWordAgain: String) {
+fun RegisterRole(
+    navController: NavHostController,
+    viewModel: RegisterViewModel = viewModel()
+) {
     val (roleType, setRoleType) = remember {
         mutableStateOf("")
     }
@@ -485,7 +484,7 @@ fun RegisterRole(navController: NavHostController, name: String, phoneNumber: St
             fontWeight = FontWeight.Light,
         )
         TextField(
-            value = name,
+            value = viewModel.name,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -497,7 +496,7 @@ fun RegisterRole(navController: NavHostController, name: String, phoneNumber: St
         )
 
         TextField(
-            value = phoneNumber,
+            value = viewModel.phoneNumber,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -509,7 +508,7 @@ fun RegisterRole(navController: NavHostController, name: String, phoneNumber: St
         )
 
         TextField(
-            value = nickName,
+            value = viewModel.nickName,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -521,7 +520,7 @@ fun RegisterRole(navController: NavHostController, name: String, phoneNumber: St
         )
 
         TextField(
-            value = passWordAgain,
+            value = viewModel.password,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -533,7 +532,7 @@ fun RegisterRole(navController: NavHostController, name: String, phoneNumber: St
         )
 
         TextField(
-            value = passWord,
+            value = viewModel.passwordAgain,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),

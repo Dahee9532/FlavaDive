@@ -1,6 +1,7 @@
 package com.example.flavadive
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -11,60 +12,24 @@ import com.example.flavadive.ui.Register.RegisterPassword
 import com.example.flavadive.ui.Register.RegisterPasswordAgain
 import com.example.flavadive.ui.Register.RegisterPhoneNumber
 import com.example.flavadive.ui.Register.RegisterRole
+import com.example.flavadive.ui.Register.RegisterViewModel
 
 @Composable
 fun FlavaDiveApp() {
     val navController = rememberNavController()
 
+    val registerViewModel: RegisterViewModel = viewModel()
+
     NavHost(
         navController = navController,
         startDestination = "login"
     ) {
-        composable("login") {
-            LoginScreen(navController)
-        }
-        composable("name") {
-            RegisterName(navController)
-        }
-        composable("phoneNumber/{name}") { backStackEntry ->
-            RegisterPhoneNumber(
-                navController = navController,
-                name = backStackEntry.arguments?.getString("name") ?: "",
-            )
-        }
-        composable("nickName/{name}/{phoneNumber}") { backStackEntry ->
-            RegisterNickName(
-                navController = navController,
-                name = backStackEntry.arguments?.getString("name") ?: "",
-                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: "",
-            )
-        }
-        composable("password/{name}/{phoneNumber}/{nickName}") { backStackEntry ->
-            RegisterPassword(
-                navController = navController,
-                name = backStackEntry.arguments?.getString("name") ?: "",
-                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: "",
-                nickName = backStackEntry.arguments?.getString("nickName") ?: "",
-            )
-        }
-        composable("passwordAgain/{name}/{phoneNumber}/{nickName}/{password}") { backStackEntry ->
-            RegisterPasswordAgain(
-                navController = navController,
-                name = backStackEntry.arguments?.getString("name") ?: "",
-                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: "",
-                nickName = backStackEntry.arguments?.getString("nickName") ?: "",
-                passWord = backStackEntry.arguments?.getString("password") ?: "",
-            )
-        }
-        composable("role/{name}/{phoneNumber}/{nickName}/{password}/{passwordAgain}") { backStackEntry ->
-            RegisterRole(
-                navController = navController,
-                name = backStackEntry.arguments?.getString("name") ?: "",
-                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: "",
-                nickName = backStackEntry.arguments?.getString("nickName") ?: "",
-                passWord = backStackEntry.arguments?.getString("password") ?: "",
-                passWordAgain = backStackEntry.arguments?.getString("passwordAgain") ?: "",
-            )
-        }
+        composable("login") { LoginScreen(navController) }
+        composable("name") { RegisterName(navController, registerViewModel) }
+        composable("phoneNumber") { RegisterPhoneNumber(navController, registerViewModel) }
+        composable("nickName") { RegisterNickName(navController, registerViewModel) }
+        composable("password") { RegisterPassword(navController, registerViewModel) }
+        composable("passwordAgain") { RegisterPasswordAgain(navController, registerViewModel) }
+        composable("role") { RegisterRole(navController, registerViewModel) }
     }
 }
