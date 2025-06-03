@@ -1,4 +1,4 @@
-package com.example.flavadive.Login
+package com.example.flavadive.ui.Login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

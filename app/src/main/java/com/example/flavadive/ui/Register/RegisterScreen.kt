@@ -1,4 +1,4 @@
-package com.example.flavadive.Register
+package com.example.flavadive.ui.Register
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

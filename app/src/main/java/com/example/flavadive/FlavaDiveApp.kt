@@ -4,13 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.flavadive.Login.LoginScreen
-import com.example.flavadive.Register.RegisterName
-import com.example.flavadive.Register.RegisterNickName
-import com.example.flavadive.Register.RegisterPassword
-import com.example.flavadive.Register.RegisterPasswordAgain
-import com.example.flavadive.Register.RegisterPhoneNumber
-import com.example.flavadive.Register.RegisterRole
+import com.example.flavadive.ui.Login.LoginScreen
+import com.example.flavadive.ui.Register.RegisterName
+import com.example.flavadive.ui.Register.RegisterNickName
+import com.example.flavadive.ui.Register.RegisterPassword
+import com.example.flavadive.ui.Register.RegisterPasswordAgain
+import com.example.flavadive.ui.Register.RegisterPhoneNumber
+import com.example.flavadive.ui.Register.RegisterRole
 
 @Composable
 fun FlavaDiveApp() {
