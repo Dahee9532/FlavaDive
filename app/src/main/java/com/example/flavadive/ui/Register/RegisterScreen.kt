@@ -458,10 +458,6 @@ fun RegisterRole(
     navController: NavHostController,
     viewModel: RegisterViewModel = viewModel()
 ) {
-    val (roleType, setRoleType) = remember {
-        mutableStateOf("")
-    }
-
     Column(
         modifier = Modifier.padding(horizontal = 25.dp),
     ) {
@@ -548,7 +544,9 @@ fun RegisterRole(
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Button(
-                onClick = {},
+                onClick = {
+                    viewModel.isHost = false
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent,
                     contentColor = Color.Black,
@@ -557,7 +555,9 @@ fun RegisterRole(
                 Text("GUEST")
             }
             Button(
-                onClick = {},
+                onClick = {
+                    viewModel.isHost = true
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent,
                     contentColor = Color.Black,

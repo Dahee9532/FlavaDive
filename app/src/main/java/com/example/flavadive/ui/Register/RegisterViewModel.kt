@@ -11,5 +11,5 @@ class RegisterViewModel : ViewModel() {
     var nickName by mutableStateOf("")
     var password by mutableStateOf("")
     var passwordAgain by mutableStateOf("")
-    var role by mutableStateOf("")
+    var isHost by mutableStateOf(false)
 }
