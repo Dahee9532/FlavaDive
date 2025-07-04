@@ -17,8 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -150,7 +148,7 @@ fun RegisterPhoneNumber(
         Spacer(modifier = Modifier.height(10.dp))
         IconButton(
             onClick = {
-                navController.navigate("nickName")
+                navController.navigate("id")
             },
             modifier = Modifier
                 .size(30.dp)
@@ -165,7 +163,7 @@ fun RegisterPhoneNumber(
 }
 
 @Composable
-fun RegisterNickName(
+fun RegisterId(
     navController: NavHostController,
     viewModel: RegisterViewModel = viewModel()
 ) {
@@ -184,7 +182,7 @@ fun RegisterNickName(
         Text(
             modifier = Modifier
                 .fillMaxWidth(),
-            text = "사용하실 닉네임을 입력해주세요.",
+            text = "아이디를 입력해주세요.",
             color = Color.Gray,
             fontSize = 25.sp,
             fontFamily = notosanskr,
@@ -216,11 +214,11 @@ fun RegisterNickName(
         )
 
         TextField(
-            value = viewModel.nickName,
-            onValueChange = { viewModel.nickName = it },
+            value = viewModel.id,
+            onValueChange = { viewModel.id = it },
             modifier = Modifier
                 .fillMaxWidth(),
-            placeholder = { Text(text = "nick name") },
+            placeholder = { Text(text = "아이디") },
             singleLine = true,
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.Transparent, // 배경 투명
@@ -299,7 +297,7 @@ fun RegisterPassword(
         )
 
         TextField(
-            value = viewModel.nickName,
+            value = viewModel.id,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -396,7 +394,7 @@ fun RegisterPasswordAgain(
         )
 
         TextField(
-            value = viewModel.nickName,
+            value = viewModel.id,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),
@@ -504,7 +502,7 @@ fun RegisterRole(
         )
 
         TextField(
-            value = viewModel.nickName,
+            value = viewModel.id,
             onValueChange = {},
             modifier = Modifier
                 .fillMaxWidth(),

@@ -79,7 +79,9 @@ fun LoginScreen(navController: NavController) {
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             TextButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate("findId")
+                },
             ) {
                 Text(
                     text = "아이디 찾기",
@@ -87,7 +89,9 @@ fun LoginScreen(navController: NavController) {
                 )
             }
             TextButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate("findPwd")
+                },
             ) {
                 Text(
                     text = "비밀번호 찾기",
